@@ -6,7 +6,7 @@ sudo su -c 'echo 655350 > /proc/sys/vm/max_map_count'
 sudo cpupower frequency-set -g performance 2>/dev/null || true
 
 # so firefox is authorized to talk to X from within the containter
-xhost local:root
+# xhost local:root
 
 VOLUME="mesh-artifact-data"
 
@@ -36,21 +36,21 @@ RUN_FLAGS="--privileged --rm -t --mount type=volume,src=$VOLUME,dst=/data"
 docker volume rm "$VOLUME" || true
 docker volume create "$VOLUME" || true
 
-TEST='0-firefox'
-echo "running $TEST ($RUN_COUNT)"
-docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS
+# TEST='0-firefox'
+# echo "running $TEST ($RUN_COUNT)"
+# docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS
 
 TEST='1-redis'
 echo "running $TEST"
-docker run $RUN_FLAGS bpowers/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
+docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
 
-TEST='2-spec'
-echo "running $TEST"
-(cd 2-spec/runner && ./test $SPEC_FLAGS --volume=$VOLUME)
+# TEST='2-spec'
+# echo "running $TEST"
+# (cd 2-spec/runner && ./test $SPEC_FLAGS --volume=$VOLUME)
 
-TEST='3-ruby'
-echo "running $TEST"
-docker run $RUN_FLAGS bpowers/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
+# TEST='3-ruby'
+# echo "running $TEST"
+# docker run $RUN_FLAGS bpowers/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
 
 
 sudo rm -rf ./results-old
@@ -59,13 +59,7 @@ if [ -d ./results ]; then
 fi
 mkdir -p ./results
 
-ANALYSIS_RUN="docker run $RUN_FLAGS --mount type=bind,src=$PWD/results,dst=/results --mount type=bind,src=$PWD/analysis,dst=/analysis,readonly bpowers/mesh-artifact-support "
-
-
-# $ANALYSIS_RUN sh -c 'rm -rf /data/3-ruby'
-# $ANALYSIS_RUN sh -c 'rm -rf /data/2-spec; cp -r /results/2-spec /data/'
-# exit
-
+ANALYSIS_RUN="docker run $RUN_FLAGS --mount type=bind,src=$PWD/results,dst=/results --mount type=bind,src=$PWD/analysis,dst=/analysis,readonly mwdsouza/mesh-artifact-support "
 
 $ANALYSIS_RUN sh -c 'cp -r /data/* /results/'
 
@@ -73,17 +67,17 @@ $ANALYSIS_RUN sh -c 'cp -r /data/* /results/'
 sudo chown -R $USER results
 
 # delete results for short-lived subprocesses firefox spawns
-find results/0-firefox/memory -name '*.tsv' -size -10k -delete
+# find results/0-firefox/memory -name '*.tsv' -size -10k -delete
 
-./analysis/0-firefox.py
-./analysis/1-redis.py
-./analysis/2-spec.py
-./analysis/3-ruby.py
+# ./analysis/0-firefox.py
+$ANALYSIS_RUN ./analysis/1-redis.py
+# ./analysis/2-spec.py
+# ./analysis/3-ruby.py
 
-(cd results/0-firefox/memory; rm -f jemalloc.tsv; ln -s $(ls -t speedometer.jemalloc*.tsv | head -n 1) jemalloc.tsv)
-(cd results/0-firefox/memory; rm -f mesh.tsv; ln -s $(ls -t speedometer.mesh*.tsv | head -n 1) mesh.tsv)
+# (cd results/0-firefox/memory; rm -f jemalloc.tsv; ln -s $(ls -t speedometer.jemalloc*.tsv | head -n 1) jemalloc.tsv)
+# (cd results/0-firefox/memory; rm -f mesh.tsv; ln -s $(ls -t speedometer.mesh*.tsv | head -n 1) mesh.tsv)
 
-$ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-6-firefox.r'
+# $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-6-firefox.r'
 $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-7-redis.r'
-$ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-8-ruby.r'
+# $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-8-ruby.r'
 

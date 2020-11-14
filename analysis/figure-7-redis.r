@@ -12,10 +12,10 @@ dat_jemalloc$alloc <- 'jemalloc + activedefrag'
 dat_jemalloc$heap <- (dat_jemalloc$rss + dat_jemalloc$kernel) / 1024.0 / 1024.0
 dat_jemalloc$time <- dat_jemalloc$time / 1000000000.0
 
-dat_mesh0n <- read.delim('results/1-redis/memory/mesh0n.tsv', header = TRUE, sep = '\t')
-dat_mesh0n$alloc <- 'Mesh (meshing disabled)'
-dat_mesh0n$heap <- (dat_mesh0n$rss + dat_mesh0n$kernel) / 1024.0 / 1024.0
-dat_mesh0n$time <- dat_mesh0n$time / 1000000000.0
+#dat_mesh0n <- read.delim('results/1-redis/memory/mesh0n.tsv', header = TRUE, sep = '\t')
+#dat_mesh0n$alloc <- 'Mesh (meshing disabled)'
+#dat_mesh0n$heap <- (dat_mesh0n$rss + dat_mesh0n$kernel) / 1024.0 / 1024.0
+#dat_mesh0n$time <- dat_mesh0n$time / 1000000000.0
 
 dat_mesh2y <- read.delim('results/1-redis/memory/mesh2y.tsv', header = TRUE, sep = '\t')
 dat_mesh2y$alloc <- 'Mesh'
@@ -25,6 +25,7 @@ dat_mesh2y$time <- dat_mesh2y$time / 1000000000.0
 
 p <- ggplot() +
     geom_line(data=dat_mesh0n, size=.3, aes(x=time, y=heap, color=alloc, group=2)) +
+#    geom_line(data=dat_glibc, size=.3, aes(x=time, y=heap, color=alloc, group=2)) +
     geom_line(data=dat_mesh2y, size=.3, aes(x=time, y=heap, color=alloc, group=5)) +
     geom_line(data=dat_jemalloc, linetype='dotted', size=.4, aes(x=time, y=heap, color=alloc, group=4)) +
     scale_y_continuous('RSS (MiB)', expand = c(0, 0), limits = c(0, 300)) +

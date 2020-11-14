@@ -41,12 +41,12 @@ def main():
         cmd = run_cmd(make_cmd + ' clean', effect=None).join()
         if cmd.returncode != 0:
             print('make failed')
-            return
+            return cmd.returncode
 
         make_cmd = run_cmd(make_cmd + ' -j4', effect=None).join()
         if make_cmd.returncode != 0:
             print('make failed')
-            return
+            return cmd.returncode
 
         # copy redis-server, redis-cli, redis-benchmark to /bin w/ suffix
         for f in ['redis-server', 'redis-cli', 'redis-benchmark']:

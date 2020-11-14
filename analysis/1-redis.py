@@ -49,7 +49,6 @@ def collect_memory():
         allocator = filename.split('.')[0]
         allocators[allocator].append(heap_at_test_end_mb)
 
-    base_mean = None
     with open(path.join(BASE_DIR, 'memory.absolute.tsv'), 'w') as results:
         results.write('allocator\tmean\tmedian\tstddev\n')
         for allocator, stats in allocators.items():
@@ -58,19 +57,7 @@ def collect_memory():
             median = numpy.median(usage)
             stddev = numpy.std(usage)
 
-            if allocator == 'mesh0n':
-                base_mean = mean
-
             results.write('%s\t%.1f\t%.1f\t%.1f\n' % (allocator, mean, median, stddev))
-
-    with open(path.join(BASE_DIR, 'memory.relative.tsv'), 'w') as results:
-        results.write('allocator\trelative_heap\n')
-        for allocator, stats in allocators.items():
-            usage = numpy.array(stats)
-            mean = numpy.mean(usage)
-            relative = mean / base_mean
-
-            results.write('%s\t%.3f\n' % (allocator, relative))
 
 
 def collect_speed():
@@ -89,7 +76,6 @@ def collect_speed():
                 time_s = float(row['seconds'])
                 allocators[allocator].append(time_s)
 
-    base_mean = None
     with open(path.join(BASE_DIR, 'speed.absolute.tsv'), 'w') as results:
         results.write('allocator\tmean\tmedian\tstddev\n')
         for allocator, stats in allocators.items():
@@ -98,19 +84,7 @@ def collect_speed():
             median = numpy.median(usage)
             stddev = numpy.std(usage)
 
-            if allocator == 'jemalloc':
-                base_mean = mean
-
             results.write('%s\t%.3f\t%.3f\t%.3f\n' % (allocator, mean, median, stddev))
-
-    with open(path.join(BASE_DIR, 'speed.relative.tsv'), 'w') as results:
-        results.write('allocator\ttime_seconds\n')
-        for allocator, stats in allocators.items():
-            usage = numpy.array(stats)
-            mean = numpy.mean(usage)
-            relative = mean / base_mean
-
-            results.write('%s\t%.3f\n' % (allocator, relative))
 
 
 def main():
