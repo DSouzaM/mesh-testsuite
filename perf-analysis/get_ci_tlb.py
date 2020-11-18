@@ -1,17 +1,18 @@
 import pandas as pd
 import numpy as np
+import sys
 
 from matplotlib import pyplot
 import math
 
-df = pd.read_csv("output.csv") 
+df = pd.read_csv(sys.argv[1]) 
 
 print(df.head()) 
 print('-'*30)
 
 
 print("dTLB-load-misses statistics")
-stats = df.groupby(['workload'])['dTLB-load-misses'].agg(['mean', 'count', 'std'])
+stats = df.groupby(['memlib'])['dTLB-load-misses'].agg(['mean', 'count', 'std'])
 
 ci95_hi = []
 ci95_lo = []
@@ -52,12 +53,12 @@ yaxis_legend.insert(len(yaxis_legend), '')
 yaxis_legend.insert(0,'')
 
 pyplot.yticks(yaxis_points, yaxis_legend) 
-pyplot.show()
+pyplot.savefig(f'{sys.argv[1]}-dTLB.png')
 
 
 print('-'*30)
 print("iTLB-load-misses statistics")
-stats = df.groupby(['workload'])['iTLB-load-misses'].agg(['mean', 'count', 'std'])
+stats = df.groupby(['memlib'])['iTLB-load-misses'].agg(['mean', 'count', 'std'])
 
 
 print(yaxis_legend)
@@ -101,4 +102,4 @@ yaxis_legend.insert(len(yaxis_legend), '')
 yaxis_legend.insert(0,'')
 
 pyplot.yticks(yaxis_points, yaxis_legend) 
-pyplot.show()
+pyplot.savefig(f'{sys.argv[1]}-iTLB.png')
