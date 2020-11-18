@@ -7,7 +7,9 @@ FROM bpowers/hoard:git-761c11f966d2891b1800844bffe10e176b66d04b as hoard
 FROM mwdsouza/mesh-artifact-0-firefox-base:latest
 
 RUN apt-get update && apt-get install -y \
-  python2-dev \
+  build-essential \
+  python-dev \
+  python-setuptools \
   linux-tools-common \
   linux-tools-generic \
   gdb \
@@ -27,6 +29,6 @@ WORKDIR /src
 COPY . .
 
 RUN cd /src/atsy/atsy \
- && ../env/bin/python setup.py develop
+ && python setup.py develop
 
 CMD [ "./entrypoint.sh" ]

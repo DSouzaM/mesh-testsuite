@@ -23,7 +23,7 @@ mkdir nginx_root
 cd nginx_root
 
 wget https://s3.amazonaws.com/bpowers/tp5n.zip
-sha512sum --check ../tp5n.manifest
+#sha512sum --check ../tp5n.manifest
 
 unzip tp5n.zip
 mkdir html/
