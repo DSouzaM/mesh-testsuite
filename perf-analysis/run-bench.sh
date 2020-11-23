@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+sudo su -c 'echo 655350 > /proc/sys/vm/max_map_count'
+sudo cpupower frequency-set -g performance 2>/dev/null || true
+
 COUNT=3
 # Directory to store output
 DIR="."
 
 
 # List of programs to interleave
-WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh") # add Firefox and Redis
+WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh", "runredis.sh")
 # List of malloc libraries
 MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh.so")
 

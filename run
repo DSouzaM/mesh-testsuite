@@ -45,8 +45,8 @@ if [[ "$FIREFOX_ONLY" == '1' ]]; then
 else
     TEST='1-redis'
     echo "running $TEST"
-    docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
-
+    docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST --metric=memory
+#    docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST --metric=tlb
     # TEST='2-spec'
     # echo "running $TEST"
     # (cd 2-spec/runner && ./test $SPEC_FLAGS --volume=$VOLUME)

@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y \
       python3 \
       libtcmalloc-minimal4 \
       libjemalloc-dev \
+      linux-tools-generic \
+      linux-tools-5.4.0-53-generic \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/python python /usr/bin/python3 10 \
  && rm -rf /usr/local/lib/python3.6 \
