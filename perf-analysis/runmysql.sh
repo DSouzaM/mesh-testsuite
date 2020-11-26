@@ -21,7 +21,7 @@ then
 	mysqladmin shutdown mysqld_safe
 fi
 
-if [ $malloclib=="malloc" ]
+if [ $malloclib == "malloc" ]
 then
 	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe &
 else
