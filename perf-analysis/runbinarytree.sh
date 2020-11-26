@@ -2,9 +2,9 @@
 malloclib=$1
 tmpfile=$2
 
-if [ $malloclib=="malloc" ]
+if [ $malloclib == "malloc" ]
 then
-	perf stat -e dTLB-load-misses,iTLB-load-misses -x' ' -o $tmpfile ./binarytree.out
+	perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile ./a.out
 else
-	LD_PRELOAD=$malloclib perf stat -e dTLB-load-misses,iTLB-load-misses -x' ' -o $tmpfile ./binarytree.out
+	perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile ./binarytree-ldpreload.sh $malloclib
 fi

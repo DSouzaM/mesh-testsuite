@@ -27,7 +27,7 @@ docker volume create "$VOLUME" > /dev/null || true
 
 RUN_FLAGS="--privileged --rm -t --mount type=volume,src=$VOLUME,dst=/data"
 
-# TODO: configure to run cache tests
+# TODO: configure to run time cmd
 docker run $RUN_FLAGS mwdsouza/mesh-artifact-1-redis ./test --runs=1 --data-dir=/data/1-redis --metric=tlb --config=$config frag
 
 # copy results into temp file

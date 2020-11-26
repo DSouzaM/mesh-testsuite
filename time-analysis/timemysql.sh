@@ -21,14 +21,21 @@ then
 	mysqladmin shutdown mysqld_safe
 fi
 
-if [ $malloclib=="malloc" ]
+echo $malloclib
+if [ $malloclib == "malloc" ]
 then
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe &
+	echo "reached malloc"
+	(time -p mysqld_safe &) 2> $tmpfile
+	#tail -n 3 $tmpfile > t
+	#cat t > $tmpfile
 else
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe --malloc-lib=$malloclib &
+	echo "reachd $malloclib"
+	(time -p mysqld_safe --malloc-lib=$malloclib &) 2> $tmpfile
+#	tail -n 3 $tmpfile > t
+ #       cat t > $tmpfile
 fi
 
-sleep 2
+sleep 3
 mysql -u root -D $dbname -e "drop table if exists $tablename;" 
 
 ycsbpath="/usr/local/bin"

@@ -9,13 +9,17 @@ COUNT=50
 # Directory to store output
 DIR="."
 
-
 # List of programs to interleave
-WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh", "runredis.sh")
-# List of malloc libraries
-MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh.so")
+WORKLOADS=("timemysql.sh" "timelarson.sh" "timebinarytree.sh", "timeredis.sh")
+MALLOCLIBS=("/usr/lib/x86_64-linux-gnu/libjemalloc.so" "malloc" "/usr/lib/libmesh.so")
 
 TMP_FILE="temp"
+
+
+if [[ -e "$TMP_FILE" ]]
+then
+	rm "$TMP_FILE"
+fi
 
 
 for workload in "${WORKLOADS[@]}"; do
@@ -26,16 +30,16 @@ for workload in "${WORKLOADS[@]}"; do
 		rm "$OUTPUT_FILE"
 	fi
 	touch "$OUTPUT_FILE"
-	echo "dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses,memlib" >> "$OUTPUT_FILE"
+	echo "real,user,sys,allocator" >> "$OUTPUT_FILE"
 done
 
-for ((i = 0 ; i < $COUNT ; i++)); do
+for workload in "${WORKLOADS[@]}"; do
 	# iterate through each of the workloads 
 	# append their output to their respective files
 	# Add column names indicating what the stats are
 	# Will be helpful when analyzing using a library like Pandas
 
-	for workload in "${WORKLOADS[@]}"; do
+	for ((i = 0 ; i < $COUNT ; i++)); do
 		# Create output file for each program
 		OUTPUT_FILE="output-$workload.csv"
 		
@@ -43,15 +47,9 @@ for ((i = 0 ; i < $COUNT ; i++)); do
 		# iterate through malloc, jemalloc, mesh
 		for mlib in "${MALLOCLIBS[@]}"; do
 			./$workload $mlib $TMP_FILE
-			if [ $i -ne 0 ]
-			then
-				x=$(awk  '/^[0-9]/ { printf "%s,", $1; }' $TMP_FILE); echo "$x$mlib" >> "$OUTPUT_FILE"
-			fi
+			cat $TMP_FILE | grep -o '[0-9]\+\.[0-9]\+' | awk  '/^[0-9]/ { printf "%s,", $1; }' >> $OUTPUT_FILE
+			echo $mlib >> $OUTPUT_FILE
+			# echo "" >> $OUTPUT_FILE
 		done
 	done
-done
-
-for workload in "${WORKLOADS[@]}"; do
-	OUTPUT_FILE="output-$workload.csv"
-	python3.6 get_ci_tlb.py $OUTPUT_FILE
 done
