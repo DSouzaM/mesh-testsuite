@@ -219,7 +219,7 @@ def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
         elif metric == 'tlb':
             tlb_log_name = '%s_tlb.%d.tsv' % (config.name, time.time())
             tlb_results_path = path.join(data_dir, 'tlb', tlb_log_name)
-            cmd = "perf stat -e dTLB-load-misses,iTLB-load-misses -x' ' -o %s %s" % (tlb_results_path, cmd)
+            cmd = "perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o %s %s" % (tlb_results_path, cmd)
 
         server_cmd = run_cmd(cmd)
 
@@ -274,6 +274,8 @@ def test_fragperf(metric, detailed_mesh_stats=False, enabled_configs=None, data_
     redis-server, recording memory usage.
     '''
     print('running fragperf test')
+    if metric not in ("none", "time"):
+      raise Exception("fragperf test cannot measure " + metric)
 
     try:
         os.mkdir(data_dir)
@@ -292,25 +294,23 @@ def test_fragperf(metric, detailed_mesh_stats=False, enabled_configs=None, data_
             if enabled_configs and config.name not in enabled_configs:
                 continue
 
+            print('%s' % config.name)
+
             server = tool('redis-server', config.name)
             cmd = '%s redis.conf' % server
 
             server_cmd = run_cmd(cmd)
 
-            start = time.time()
             time.sleep(.4) # sleep for 100 ms to give server time to start
             server_pid = getpid('redis-server')
 
-            start = time.time()
-            client = run_cmd('cat %s | %s' % (TEST_SCRIPT, REDIS_CLI)).join()
-            end = time.time()
-
-            result_row = '%s\t%.3f\n' % (config.name, end - start)
-            sys.stdout.write(result_row)
-            results.write(result_row)
+            client = run_cmd('cat %s | time -p -- %s > /dev/null' % (TEST_SCRIPT, REDIS_CLI))
+            client.join()
+            output = client.stderr.decode()
+            sys.stdout.write(output)
+            results.write(output)
 
             run_cmd('kill %d' % server_pid).join()
-            time.sleep(1.2) # give mstat a chance to finish up
             server_cmd.end()
             server_cmd.join()
 
@@ -333,7 +333,8 @@ def main():
     parser.add_argument('--mesh-details', action='store_const', const=True, help='Dump mesh internal details')
     parser.add_argument('--data-dir', type=str, default='.', help='where to store results')
     parser.add_argument('--runs', type=int, default=5, help='Number of runs to do')
-    parser.add_argument('--metric', type=str, choices=['none', 'memory', 'tlb', 'cache'], default='none', help='what metric to instrument')
+    parser.add_argument('--metric', type=str, choices=['none', 'memory', 'tlb', 'time'], default='none', help='what metric to instrument')
+    parser.add_argument('--freq', type=int, help='mstat frequency')
     parser.add_argument('tests', nargs='*', default=DEFAULT_TESTS, help='specific tests to run')
     args = parser.parse_args()
 
@@ -342,6 +343,10 @@ def main():
 
     if args.mesh_details:
         os.environ['MESH_BACKGROUND_THREAD'] = '1'
+
+    if args.freq:
+        global FREQ
+        FREQ = args.freq
 
     for test in args.tests:
         for i in range(args.runs):

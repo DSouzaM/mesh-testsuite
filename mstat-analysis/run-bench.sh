@@ -6,7 +6,7 @@ DIR="."
 
 FREQ=100
 
-WORKLOADS=("runbinarytree.sh" "runlarson.sh" "runmysql.sh")
+WORKLOADS=("runbinarytree.sh" "runlarson.sh" "runmysql.sh", "runredis.sh")
 # List of malloc libraries
 MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh.so")
 
