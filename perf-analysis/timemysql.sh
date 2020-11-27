@@ -21,11 +21,20 @@ then
 	mysqladmin shutdown mysqld_safe
 fi
 
-if [ $malloclib=="malloc" ]
+echo $malloclib
+if [ $malloclib == "malloc" ]
 then
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe &
+	echo "reached malloc"
+	(time -p mysqld_safe &) 2> $tmpfile
+	#tail -n 3 $tmpfile > t
+	#cat t > $tmpfile
+	# nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe &
 else
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses  -x' ' -o $tmpfile mysqld_safe --malloc-lib=$malloclib &
+	echo "reachd $malloclib"
+	(time -p mysqld_safe --malloc-lib=$malloclib &) 2> $tmpfile
+#	tail -n 3 $tmpfile > t
+ #       cat t > $tmpfile
+	# nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses  -x' ' -o $tmpfile mysqld_safe --malloc-lib=$malloclib &
 fi
 
 sleep 2

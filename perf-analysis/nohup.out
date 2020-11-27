@@ -1,0 +1,404 @@
+2020-11-21T15:17:16.671459Z mysqld_safe Logging to syslog.
+2020-11-21T15:17:16.676195Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:17:16.699764Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:18:19.872759Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:18:20.961462Z mysqld_safe Logging to syslog.
+2020-11-21T15:18:20.966404Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:18:20.990482Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:19:23.584959Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:19:24.065596Z mysqld_safe Logging to syslog.
+2020-11-21T15:19:24.070381Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:19:24.093834Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:20:25.608531Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:20:26.332893Z mysqld_safe Logging to syslog.
+2020-11-21T15:20:26.337629Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:20:26.361044Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:21:29.928832Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:21:30.642739Z mysqld_safe Logging to syslog.
+2020-11-21T15:21:30.647492Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:21:30.670982Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:22:31.504852Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:22:31.989047Z mysqld_safe Logging to syslog.
+2020-11-21T15:22:31.993696Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:22:32.016903Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:23:34.176828Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:23:35.277462Z mysqld_safe Logging to syslog.
+2020-11-21T15:23:35.282177Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:23:35.305834Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:24:36.576949Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:24:37.685139Z mysqld_safe Logging to syslog.
+2020-11-21T15:24:37.689866Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:24:37.714090Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:25:43.408459Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:25:44.163637Z mysqld_safe Logging to syslog.
+2020-11-21T15:25:44.168661Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:25:44.192514Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:26:46.296819Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:26:46.781756Z mysqld_safe Logging to syslog.
+2020-11-21T15:26:46.786647Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:26:46.809500Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:27:49.048825Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:27:49.851597Z mysqld_safe Logging to syslog.
+2020-11-21T15:27:49.856525Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:27:49.880336Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:28:20.881692Z mysqld_safe Logging to syslog.
+2020-11-21T15:28:20.886292Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:28:20.919279Z mysqld_safe A mysqld process already exists
+2020-11-21T15:28:22.992903Z mysqld_safe Logging to syslog.
+2020-11-21T15:28:22.997713Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:28:23.030492Z mysqld_safe A mysqld process already exists
+2020-11-21T15:28:24.600738Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:28:25.096969Z mysqld_safe Logging to syslog.
+2020-11-21T15:28:25.101695Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:28:25.125778Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:28:25.827470Z mysqld_safe Logging to syslog.
+2020-11-21T15:28:25.832210Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:28:25.864853Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:03.877034Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:03.882085Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:03.915673Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:06.000928Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:06.005847Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:06.038824Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:07.928539Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:29:08.105621Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:08.110234Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:08.133869Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:29:08.778533Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:08.783412Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:08.816144Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:35.444867Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:35.449841Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:35.484272Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:35.589154Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:35.593871Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:35.626402Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:37.544816Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:37.549524Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:37.582311Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:39.663081Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:39.667878Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:39.700316Z mysqld_safe A mysqld process already exists
+2020-11-21T15:29:40.564730Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:29:41.772215Z mysqld_safe Logging to syslog.
+2020-11-21T15:29:41.777197Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:29:41.800705Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:30:43.564568Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:30:44.138958Z mysqld_safe Logging to syslog.
+2020-11-21T15:30:44.143927Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:30:44.168204Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:31:12.845767Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:12.850666Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:12.882789Z mysqld_safe A mysqld process already exists
+2020-11-21T15:31:14.955002Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:14.959904Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:14.992991Z mysqld_safe A mysqld process already exists
+2020-11-21T15:31:16.584538Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:31:17.061426Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:17.066038Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:17.089790Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:31:28.768850Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:28.773764Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:28.806720Z mysqld_safe A mysqld process already exists
+2020-11-21T15:31:30.858541Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:30.863371Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:30.896601Z mysqld_safe A mysqld process already exists
+2020-11-21T15:31:32.352882Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:31:32.965923Z mysqld_safe Logging to syslog.
+2020-11-21T15:31:32.970604Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:31:32.994438Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:32:34.052707Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:32:34.648528Z mysqld_safe Logging to syslog.
+2020-11-21T15:32:34.653222Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:32:34.677111Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:33:30.628735Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:33:31.147201Z mysqld_safe Logging to syslog.
+2020-11-21T15:33:31.152186Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:33:31.176059Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:34:35.632630Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:34:36.905986Z mysqld_safe Logging to syslog.
+2020-11-21T15:34:36.910606Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:34:36.934364Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:35:40.764939Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:35:41.160567Z mysqld_safe Logging to syslog.
+2020-11-21T15:35:41.165316Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:35:41.189361Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:36:40.236801Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:36:40.596761Z mysqld_safe Logging to syslog.
+2020-11-21T15:36:40.601408Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:36:40.624722Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:37:42.360584Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:37:42.736394Z mysqld_safe Logging to syslog.
+2020-11-21T15:37:42.741417Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:37:42.764909Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:38:41.892830Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:38:43.046211Z mysqld_safe Logging to syslog.
+2020-11-21T15:38:43.050868Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:38:43.074321Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:39:45.800711Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:39:46.214179Z mysqld_safe Logging to syslog.
+2020-11-21T15:39:46.218739Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:39:46.242818Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:40:47.780744Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:40:48.330400Z mysqld_safe Logging to syslog.
+2020-11-21T15:40:48.335216Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:40:48.358671Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:41:50.056262Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:41:50.347403Z mysqld_safe Logging to syslog.
+2020-11-21T15:41:50.352211Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:41:50.375417Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:42:52.072471Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:42:52.948199Z mysqld_safe Logging to syslog.
+2020-11-21T15:42:52.952912Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:42:52.976106Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:43:57.528555Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:43:58.105422Z mysqld_safe Logging to syslog.
+2020-11-21T15:43:58.110172Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:43:58.133610Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:44:36.041370Z mysqld_safe Logging to syslog.
+2020-11-21T15:44:36.046384Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:44:36.079427Z mysqld_safe A mysqld process already exists
+2020-11-21T15:44:38.138328Z mysqld_safe Logging to syslog.
+2020-11-21T15:44:38.143144Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:44:38.175734Z mysqld_safe A mysqld process already exists
+2020-11-21T15:44:39.808738Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:44:40.234323Z mysqld_safe Logging to syslog.
+2020-11-21T15:44:40.239055Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:44:40.262487Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:45:43.668509Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:45:43.936204Z mysqld_safe Logging to syslog.
+2020-11-21T15:45:43.941125Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:45:43.964782Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:46:00.411967Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:00.416735Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:00.449343Z mysqld_safe A mysqld process already exists
+2020-11-21T15:46:02.521049Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:02.525880Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:02.558988Z mysqld_safe A mysqld process already exists
+2020-11-21T15:46:03.500720Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:46:04.629648Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:04.634211Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:04.657764Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:46:45.807864Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:45.812724Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:45.845414Z mysqld_safe A mysqld process already exists
+2020-11-21T15:46:47.904689Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:47.909485Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:47.942082Z mysqld_safe A mysqld process already exists
+2020-11-21T15:46:50.000592Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:50.005314Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:50.037824Z mysqld_safe A mysqld process already exists
+2020-11-21T15:46:50.248778Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:46:52.137737Z mysqld_safe Logging to syslog.
+2020-11-21T15:46:52.142343Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:46:52.165868Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:47:55.532712Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:47:56.813085Z mysqld_safe Logging to syslog.
+2020-11-21T15:47:56.817753Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:47:56.840939Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:48:57.132776Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:48:57.954662Z mysqld_safe Logging to syslog.
+2020-11-21T15:48:57.959587Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:48:57.983648Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:50:05.040781Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:50:06.074820Z mysqld_safe Logging to syslog.
+2020-11-21T15:50:06.079528Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:50:06.102824Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:50:32.354717Z mysqld_safe Logging to syslog.
+2020-11-21T15:50:32.359558Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:50:32.392511Z mysqld_safe A mysqld process already exists
+2020-11-21T15:50:34.474331Z mysqld_safe Logging to syslog.
+2020-11-21T15:50:34.479166Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:50:34.511526Z mysqld_safe A mysqld process already exists
+2020-11-21T15:50:35.768839Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:50:36.564192Z mysqld_safe Logging to syslog.
+2020-11-21T15:50:36.568822Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:50:36.592729Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:51:17.120847Z mysqld_safe Logging to syslog.
+2020-11-21T15:51:17.125546Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:51:17.158034Z mysqld_safe A mysqld process already exists
+2020-11-21T15:51:19.224268Z mysqld_safe Logging to syslog.
+2020-11-21T15:51:19.228901Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:51:19.261210Z mysqld_safe A mysqld process already exists
+2020-11-21T15:51:21.323351Z mysqld_safe Logging to syslog.
+2020-11-21T15:51:21.328046Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:51:21.360286Z mysqld_safe A mysqld process already exists
+2020-11-21T15:51:22.336480Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:51:23.424297Z mysqld_safe Logging to syslog.
+2020-11-21T15:51:23.428996Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:51:23.452017Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:52:05.339035Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:05.344108Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:05.376461Z mysqld_safe A mysqld process already exists
+2020-11-21T15:52:07.464091Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:07.468946Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:07.501000Z mysqld_safe A mysqld process already exists
+2020-11-21T15:52:09.505526Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:52:09.563513Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:09.568244Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:09.592498Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:52:37.486568Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:37.491264Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:37.523517Z mysqld_safe A mysqld process already exists
+2020-11-21T15:52:39.600235Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:39.604974Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:39.637384Z mysqld_safe A mysqld process already exists
+2020-11-21T15:52:41.448302Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:52:41.717342Z mysqld_safe Logging to syslog.
+2020-11-21T15:52:41.722238Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:52:41.746386Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:53:21.240204Z mysqld_safe Logging to syslog.
+2020-11-21T15:53:21.244925Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:53:21.277296Z mysqld_safe A mysqld process already exists
+2020-11-21T15:53:23.350228Z mysqld_safe Logging to syslog.
+2020-11-21T15:53:23.354782Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:53:23.387897Z mysqld_safe A mysqld process already exists
+2020-11-21T15:53:25.248361Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:53:25.464239Z mysqld_safe Logging to syslog.
+2020-11-21T15:53:25.468845Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:53:25.492718Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:54:27.040886Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:54:27.495087Z mysqld_safe Logging to syslog.
+2020-11-21T15:54:27.499771Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:54:27.523170Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:55:29.508867Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:55:30.249752Z mysqld_safe Logging to syslog.
+2020-11-21T15:55:30.254720Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:55:30.279009Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:56:14.367646Z mysqld_safe Logging to syslog.
+2020-11-21T15:56:14.372656Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:56:14.404757Z mysqld_safe A mysqld process already exists
+2020-11-21T15:56:16.474683Z mysqld_safe Logging to syslog.
+2020-11-21T15:56:16.479648Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:56:16.511952Z mysqld_safe A mysqld process already exists
+2020-11-21T15:56:18.132736Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:56:18.588806Z mysqld_safe Logging to syslog.
+2020-11-21T15:56:18.593540Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:56:18.617294Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:57:01.901007Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:57:02.790997Z mysqld_safe Logging to syslog.
+2020-11-21T15:57:02.795709Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:57:02.819139Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:58:07.788752Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:58:08.882406Z mysqld_safe Logging to syslog.
+2020-11-21T15:58:08.887464Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:58:08.911850Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:59:00.128889Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:00.133596Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:00.166067Z mysqld_safe A mysqld process already exists
+2020-11-21T15:59:02.236933Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:02.241618Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:02.273423Z mysqld_safe A mysqld process already exists
+2020-11-21T15:59:04.205064Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:59:04.331702Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:04.336744Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:04.360331Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T15:59:04.930078Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:04.934403Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:49.850598Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:49.855344Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:49.887825Z mysqld_safe A mysqld process already exists
+2020-11-21T15:59:51.959165Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:51.963891Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:51.996370Z mysqld_safe A mysqld process already exists
+2020-11-21T15:59:54.071149Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:54.075888Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:54.109636Z mysqld_safe A mysqld process already exists
+2020-11-21T15:59:54.884809Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T15:59:56.164009Z mysqld_safe Logging to syslog.
+2020-11-21T15:59:56.168809Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T15:59:56.191939Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:00:43.013898Z mysqld_safe Logging to syslog.
+2020-11-21T16:00:43.018702Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:00:43.050855Z mysqld_safe A mysqld process already exists
+2020-11-21T16:00:45.123718Z mysqld_safe Logging to syslog.
+2020-11-21T16:00:45.128838Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:00:45.161706Z mysqld_safe A mysqld process already exists
+2020-11-21T16:00:47.221320Z mysqld_safe Logging to syslog.
+2020-11-21T16:00:47.226309Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:00:47.259064Z mysqld_safe A mysqld process already exists
+2020-11-21T16:00:47.724718Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:00:48.803396Z mysqld_safe Logging to syslog.
+2020-11-21T16:00:48.807945Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:00:48.829897Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:00:49.342215Z mysqld_safe Logging to syslog.
+2020-11-21T16:00:49.347278Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:00:49.379962Z mysqld_safe A mysqld process already exists
+2020-11-21T16:01:35.504732Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+real 46.86
+user 1.04
+sys 1.22
+2020-11-21T16:01:35.918632Z mysqld_safe Logging to syslog.
+2020-11-21T16:01:35.923449Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:01:35.946986Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:02:38.328906Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:02:39.325103Z mysqld_safe Logging to syslog.
+2020-11-21T16:02:39.329769Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:02:39.353300Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:03:41.092588Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:03:41.779104Z mysqld_safe Logging to syslog.
+2020-11-21T16:03:41.783958Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:03:41.808475Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:04:41.912697Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:04:42.320874Z mysqld_safe Logging to syslog.
+2020-11-21T16:04:42.325532Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:04:42.349757Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:05:44.544776Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:05:44.978662Z mysqld_safe Logging to syslog.
+2020-11-21T16:05:44.983583Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:05:45.007665Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:05:51.913424Z mysqld_safe Logging to syslog.
+2020-11-21T16:05:51.918035Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:05:51.950521Z mysqld_safe A mysqld process already exists
+2020-11-21T16:05:54.007580Z mysqld_safe Logging to syslog.
+2020-11-21T16:05:54.012588Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:05:54.045331Z mysqld_safe A mysqld process already exists
+2020-11-21T16:05:55.032496Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:05:56.109308Z mysqld_safe Logging to syslog.
+2020-11-21T16:05:56.114268Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:05:56.137973Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:07:00.268782Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:07:00.624006Z mysqld_safe Logging to syslog.
+2020-11-21T16:07:00.628832Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:07:00.652356Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:07:34.574867Z mysqld_safe Logging to syslog.
+2020-11-21T16:07:34.579876Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:07:34.612950Z mysqld_safe A mysqld process already exists
+2020-11-21T16:07:36.679514Z mysqld_safe Logging to syslog.
+2020-11-21T16:07:36.684353Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:07:36.717032Z mysqld_safe A mysqld process already exists
+2020-11-21T16:07:38.795976Z mysqld_safe Logging to syslog.
+2020-11-21T16:07:38.800709Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:07:38.833038Z mysqld_safe A mysqld process already exists
+2020-11-21T16:07:38.920482Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:07:40.889694Z mysqld_safe Logging to syslog.
+2020-11-21T16:07:40.894196Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:07:40.917536Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:08:44.856812Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:08:46.080874Z mysqld_safe Logging to syslog.
+2020-11-21T16:08:46.085563Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:08:46.109352Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:08:55.916185Z mysqld_safe Logging to syslog.
+2020-11-21T16:08:55.920824Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:08:55.953081Z mysqld_safe A mysqld process already exists
+2020-11-21T16:08:58.009755Z mysqld_safe Logging to syslog.
+2020-11-21T16:08:58.014525Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:08:58.048063Z mysqld_safe A mysqld process already exists
+2020-11-21T16:08:59.880641Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:09:00.112125Z mysqld_safe Logging to syslog.
+2020-11-21T16:09:00.116858Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:09:00.140818Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:09:44.511382Z mysqld_safe Logging to syslog.
+2020-11-21T16:09:44.516265Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:09:44.548267Z mysqld_safe A mysqld process already exists
+2020-11-21T16:09:46.622669Z mysqld_safe Logging to syslog.
+2020-11-21T16:09:46.627632Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:09:46.660334Z mysqld_safe A mysqld process already exists
+2020-11-21T16:09:48.700991Z mysqld_safe Logging to syslog.
+2020-11-21T16:09:48.706087Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:09:48.738703Z mysqld_safe A mysqld process already exists
+2020-11-21T16:09:49.104758Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
+2020-11-21T16:09:50.812867Z mysqld_safe Logging to syslog.
+2020-11-21T16:09:50.817597Z mysqld_safe Logging to '/var/log/mysql/error.log'.
+2020-11-21T16:09:50.841813Z mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-11-21T16:11:37.736830Z mysqld_safe mysqld from pid file /var/run/mysqld/mysqld.pid ended
