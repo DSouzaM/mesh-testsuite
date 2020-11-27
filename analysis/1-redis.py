@@ -14,7 +14,7 @@ BASE_DIR = 'results/1-redis'
 MEMORY_DIR = path.join(BASE_DIR, 'memory')
 SPEED_DIR = path.join(BASE_DIR, 'speed')
 
-TEST_END = 7.5 # seconds
+TEST_END = 19.5# seconds
 
 
 def slurp(file_name):

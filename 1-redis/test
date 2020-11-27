@@ -16,14 +16,13 @@ from config import configs
 from cmd import run_cmd
 from read_mesh_dump import open_data, MB
 
-USE_MSTAT = True
 FREQ = 127
 
 TEST_SCRIPT = 'fragmentation.redis'
 
 ROOT_DIR = os.getcwd()
 
-TEST_DURATION = 10 # seconds
+TEST_DURATION = 20 # seconds
 
 DELIM = '>>>>>>>>>>' # delimits different mesh dumps
 
@@ -133,7 +132,7 @@ def slurp(file_name):
         return f.read().strip()
 
 
-def test_perf(detailed_mesh_stats=False, enabled_configs=None, latency_stats=False, data_dir='.'):
+def test_perf(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir='.'):
     redis_benchmark = tool('redis-benchmark', 'jemalloc')
 
     for config in configs:
@@ -177,7 +176,7 @@ def getpid(name, tries=10, sleep_secs=0.1):
     raise Exception('couldn\'t find %s' % name)
 
 
-def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=False, data_dir='.'):
+def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir='.'):
     '''
     Given a file containing commands, run them against each
     redis-server, recording memory usage.
@@ -190,7 +189,10 @@ def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=Fal
     except:
         pass
     try:
-        os.mkdir(path.join(data_dir, 'memory'))
+        if metric == 'memory':
+            os.mkdir(path.join(data_dir, 'memory'))
+        elif metric == 'tlb':
+            os.mkdir(path.join(data_dir, 'tlb'))
     except:
         pass
 
@@ -204,7 +206,7 @@ def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=Fal
 
         server = tool('redis-server', config.name)
         cmd = '%s redis.conf' % server
-        if USE_MSTAT:
+        if metric == 'memory':
             mstat_log_name = '%s.%d.tsv' % (config.name, time.time())
             symlink_dst = path.join(data_dir, 'memory', '%s.tsv' % config.name)
             try:
@@ -214,6 +216,10 @@ def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=Fal
             os.symlink(mstat_log_name, symlink_dst)
             mstat_results_path = path.join(data_dir, 'memory', mstat_log_name)
             cmd = 'mstat -o %s -freq %d -- %s' % (mstat_results_path, FREQ, cmd)
+        elif metric == 'tlb':
+            tlb_log_name = '%s_tlb.%d.tsv' % (config.name, time.time())
+            tlb_results_path = path.join(data_dir, 'tlb', tlb_log_name)
+            cmd = "perf stat -e dTLB-load-misses,iTLB-load-misses -x' ' -o %s %s" % (tlb_results_path, cmd)
 
         server_cmd = run_cmd(cmd)
 
@@ -231,9 +237,7 @@ def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=Fal
 
         if config.defrag:
             run_cmd('%s config set activedefrag yes' % REDIS_CLI).join()
-            time.sleep(5) # give time to reach steady state
-            run_cmd('%s config set activedefrag no' % REDIS_CLI).join()
-            time.sleep(1)
+            time.sleep(10) # give time to reach steady state
         else:
             run_cmd('%s info' % REDIS_CLI).join()
             time.sleep(5) # give time to reach steady state
@@ -264,7 +268,7 @@ def test_frag(detailed_mesh_stats=False, enabled_configs=None, latency_stats=Fal
             print_distribution(parts[1])
 
 
-def test_fragperf(detailed_mesh_stats=False, enabled_configs=None, latency_stats=False, data_dir='.'):
+def test_fragperf(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir='.'):
     '''
     Given a file containing commands, run them against each
     redis-server, recording memory usage.
@@ -291,13 +295,7 @@ def test_fragperf(detailed_mesh_stats=False, enabled_configs=None, latency_stats
             server = tool('redis-server', config.name)
             cmd = '%s redis.conf' % server
 
-            if latency_stats:
-                os.environ['LATALLOC_PREFIX'] = '%s/latency/%s' % (ROOT_DIR, config.name)
-                os.environ['LD_PRELOAD'] = 'liblatalloc.so'
             server_cmd = run_cmd(cmd)
-            if latency_stats:
-                del os.environ['LATALLOC_PREFIX']
-                del os.environ['LD_PRELOAD']
 
             start = time.time()
             time.sleep(.4) # sleep for 100 ms to give server time to start
@@ -332,10 +330,10 @@ def main():
     parser = argparse.ArgumentParser(description='Test redis with different allocators.')
     parser.add_argument('-v', action='store_const', const=True, help='verbose logging')
     parser.add_argument('--config', nargs='+', help='specific configs to run')
-    parser.add_argument('--latency', action='store_const', const=True, default=False, help='gather latency metrics')
     parser.add_argument('--mesh-details', action='store_const', const=True, help='Dump mesh internal details')
     parser.add_argument('--data-dir', type=str, default='.', help='where to store results')
     parser.add_argument('--runs', type=int, default=5, help='Number of runs to do')
+    parser.add_argument('--metric', type=str, choices=['none', 'memory', 'tlb', 'cache'], default='none', help='what metric to instrument')
     parser.add_argument('tests', nargs='*', default=DEFAULT_TESTS, help='specific tests to run')
     args = parser.parse_args()
 
@@ -345,17 +343,14 @@ def main():
     if args.mesh_details:
         os.environ['MESH_BACKGROUND_THREAD'] = '1'
 
-    if args.latency:
-        USE_MSTAT = False
-
     for test in args.tests:
         for i in range(args.runs):
             # shuffle configs so that results aren't artifacts of order
             shuffle(configs)
             TESTS[test](
+                metric=args.metric,
                 detailed_mesh_stats=args.mesh_details,
                 enabled_configs=args.config,
-                latency_stats=args.latency,
                 data_dir=args.data_dir)
             # try to give the CPU a sec to cool off
             time.sleep(1)

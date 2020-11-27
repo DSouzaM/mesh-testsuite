@@ -2,13 +2,11 @@
 dbname="testdb"
 tablename="usertable"
 
-# first command line arg:
-# for mesh -> "/usr/lib/libmesh.so" 
-# for jemalloc -> "/usr/lib/x86_64-linux-gnu/libjemalloc.so"
-# for malloc -> "malloc"
 malloclib=$1 
-# second command line arg: tmp filename which is used to create o/p csv
-tmpfile=$2
+DIR=$2
+FREQ=$3
+i=$4
+mlibname=$5
 
 
 mkdir -p /var/run/mysqld
@@ -23,13 +21,9 @@ fi
 
 if [ $malloclib == "malloc" ]
 then
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe &
+	mstat -o "$DIR/output/runmysql.sh/$i-$mlibname.tsv" -freq "$FREQ" -- mysqld_safe &
 else
-<<<<<<< HEAD
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses  -x' ' -o $tmpfile mysqld_safe --malloc-lib=$malloclib &
-=======
-	nohup perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $tmpfile mysqld_safe --malloc-lib=$malloclib &
->>>>>>> 6364a83429513be3bc7016826e9868fd5a0291a6
+	mstat -o "$DIR/output/runmysql.sh/$i-$mlibname.tsv" -freq "$FREQ" -- mysqld_safe --malloc-lib=$malloclib &
 fi
 
 sleep 2
