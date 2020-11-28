@@ -27,8 +27,7 @@ docker volume create "$VOLUME" > /dev/null || true
 
 RUN_FLAGS="--privileged --rm -t --mount type=volume,src=$VOLUME,dst=/data"
 
-# TODO: configure to run time cmd
-docker run $RUN_FLAGS mwdsouza/mesh-artifact-1-redis ./test --runs=1 --data-dir=/data/1-redis --metric=tlb --config=$config frag
+docker run $RUN_FLAGS mwdsouza/mesh-artifact-1-redis ./test --runs=1 --data-dir=/data/1-redis --metric=time --config=$config fragperf
 
 # copy results into temp file
-docker run $RUN_FLAGS --mount type=bind,src=$PWD,dst=/results mwdsouza/mesh-artifact-1-redis sh -c "find /data/1-redis/tlb/ -type f -exec cp {} /results/$tmpfile \;"
+docker run $RUN_FLAGS --mount type=bind,src=$PWD,dst=/results mwdsouza/mesh-artifact-1-redis sh -c "find /data/1-redis/speed/ -type f -exec cp {} /results/$tmpfile \;"

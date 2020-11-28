@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
       libjemalloc-dev \
       linux-tools-generic \
       linux-tools-4.15.0-66-generic \
+      time \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/python python /usr/bin/python3 10 \
  && rm -rf /usr/local/lib/python3.6 \

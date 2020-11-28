@@ -1,8 +1,10 @@
 #!/bin/bash
 
 malloclib=$1
-
-tmpfile=$2
+DIR=$(realpath $2)
+FREQ=$3
+i=$4
+mlibname=$5
 
 case $malloclib in
   *"jemalloc"*)
@@ -27,7 +29,7 @@ docker volume create "$VOLUME" > /dev/null || true
 
 RUN_FLAGS="--privileged --rm -t --mount type=volume,src=$VOLUME,dst=/data"
 
-docker run $RUN_FLAGS mwdsouza/mesh-artifact-1-redis ./test --runs=1 --data-dir=/data/1-redis --metric=tlb --config=$config frag
+docker run $RUN_FLAGS mwdsouza/mesh-artifact-1-redis ./test --runs=1 --data-dir=/data/1-redis --metric=memory --freq=$FREQ --config=$config frag
 
-# copy results into temp file
-docker run $RUN_FLAGS --mount type=bind,src=$PWD,dst=/results mwdsouza/mesh-artifact-1-redis sh -c "find /data/1-redis/tlb/ -type f -exec cp {} /results/$tmpfile \;"
+# copy results into destination location
+docker run $RUN_FLAGS --mount type=bind,src=$DIR,dst=$DIR mwdsouza/mesh-artifact-1-redis sh -c "find /data/1-redis/memory/ -type f -exec cp {} $DIR/output/runredis.sh/$i-$mlibname.tsv \;"
