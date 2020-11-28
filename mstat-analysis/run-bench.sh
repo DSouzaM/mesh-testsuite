@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COUNT=1
+COUNT=20
 # Directory to store output
 DIR="."
 

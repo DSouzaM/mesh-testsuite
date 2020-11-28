@@ -1,0 +1,7 @@
+# started on Fri Nov 27 12:39:21 2020
+
+439210  dTLB-load-misses 176172655 80.02  
+105892  iTLB-load-misses 176171768 80.02  
+225318  dTLB-store-misses 176170763 80.02  
+2107979  cache-references 176169824 80.01  
+1989649  cache-misses 176000786 79.94 94.387 of all cache refs

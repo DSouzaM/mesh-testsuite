@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+#set -euo pipefail
 
-sudo su -c 'echo 655350 > /proc/sys/vm/max_map_count'
-sudo cpupower frequency-set -g performance 2>/dev/null || true
+#sudo su -c 'echo 655350 > /proc/sys/vm/max_map_count'
+#sudo cpupower frequency-set -g performance 2>/dev/null || true
 
-COUNT=50
+COUNT=2
 # Directory to store output
 DIR="."
 
 
 # List of programs to interleave
-WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh", "runredis.sh")
+#WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh", "runredis.sh")
+WORKLOADS=("runbinarytree.sh")
 # List of malloc libraries
 MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh.so")
 
@@ -23,7 +24,7 @@ for workload in "${WORKLOADS[@]}"; do
 	OUTPUT_FILE="output-$workload.csv"
 	if [[ -e "$OUTPUT_FILE" ]]
 	then
-q		rm "$OUTPUT_FILE"
+		rm "$OUTPUT_FILE"
 	fi
 	touch "$OUTPUT_FILE"
 	echo "dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses,memlib" >> "$OUTPUT_FILE"
