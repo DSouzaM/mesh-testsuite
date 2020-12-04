@@ -5,16 +5,32 @@ SUFFIX=`cat /dev/urandom | tr -cd 'a-f0-9' | head -c 8`
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
 
-version=83.0
-
-if [ ! -z "$TEST_LD_PRELOAD" ]; then
-    arg="-env LD_PRELOAD=$TEST_LD_PRELOAD"
-    binary=/opt/firefox-${version}-nojemalloc/bin/firefox
-else
-    arg=''
+version=57.0.4
+if [ "$TEST_NAME" = "jemalloc" ]; then
     binary=/opt/firefox-${version}-jemalloc/bin/firefox
+else
+    binary=/opt/firefox-${version}-nojemalloc/bin/firefox
 fi
 
-mkdir -p /data/0-firefox/memory
-
-exec mstat -o "/data/0-firefox/memory/speedometer.$TEST_NAME.$DATE-$SUFFIX.tsv" $arg $binary "$@"
+case $TEST_METRIC in
+    "memory")
+        if [ ! -z "$TEST_LD_PRELOAD" ]; then
+            arg="-env LD_PRELOAD=$TEST_LD_PRELOAD"
+        else
+            arg=""
+        fi
+        mkdir -p /data/0-firefox/memory
+        exec mstat -o "/data/0-firefox/memory/speedometer.$TEST_NAME.$DATE-$SUFFIX.tsv" $arg $binary "$@"
+        ;;
+    "speed")
+        if [ ! -z "$TEST_LD_PRELOAD" ]; then
+            LD_PRELOAD="$TEST_LD_PRELOAD" exec $binary "$@"
+        else
+            exec $binary "$@"
+        fi
+        ;;
+    *)
+        echo "Unrecognized metric $TEST_METRIC"
+        exit 1
+        ;;
+esac

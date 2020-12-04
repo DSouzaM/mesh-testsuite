@@ -199,18 +199,25 @@ class MultiTabTest(BaseMultiTabTest):
             time.sleep(2)
             self.driver.switch_to_window(self.driver.window_handles[-1])
 
-            score = None
-            while not score:
+            results = []
+            while not results:
                 time.sleep(10)
 
                 # sometimes we can't find the element - no worries if not
                 try:
-                    score_el = self.driver.find_element_by_id('result-number')
-                    score = score_el.get_attribute('innerHTML')
+                    # score_el = self.driver.find_element_by_id('results-with-statistics')
+                    # score = score_el.get_attribute('innerHTML')
+                    tables = self.driver.find_elements_by_class_name('results-table')
+                    for table in tables:
+                        for tr in table.find_elements_by_tag_name("tr"):
+                            # tr.text = Iteration 1 nnnn ms", we want nnnn
+                            results.append(tr.text.split(" ")[2])
                 except WebDriverException:
                     pass
 
         time.sleep(10)
+        for result in results:
+            print "{}\t{}\t{}".format(os.environ["TEST_NAME"], os.environ["RUN_NUMBER"], result)
         # print('SCORE\t{}'.format(score))
-        self.stats.print_stats(score=score)
+        # self.stats.print_stats(score=score)
         ActionChains(self.driver).key_down(ctrl_key).send_keys('q').key_up(ctrl_key).perform()

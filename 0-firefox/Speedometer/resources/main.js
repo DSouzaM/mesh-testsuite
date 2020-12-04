@@ -39,7 +39,7 @@ window.benchmarkClient = {
             document.getElementById('confidence-number').textContent = '\u00b1 ' + results.formattedDelta;
 
         this._populateDetailedResults(results.formattedValues);
-        document.getElementById('results-with-statistics').textContent = results.formattedMeanAndDelta;
+        document.getElementById('results-with-statistics').textContent = results.sum;
 
         if (this.displayUnit == 'ms') {
             document.getElementById('show-summary').style.display = 'none';
@@ -51,7 +51,8 @@ window.benchmarkClient = {
         var suitesCount = this.suitesCount;
         function valueForUnit(measuredValues) {
             if (displayUnit == 'ms')
-                return measuredValues.geomean;
+                // Return the entire time to run all tests
+                return measuredValues.total;
             return measuredValues.score;
         }
 
@@ -87,6 +88,7 @@ window.benchmarkClient = {
                 return toSigFigPrecision(value, 4) + ' ' + displayUnit;
             }),
             mean: arithmeticMean,
+            sum: sum,
             formattedMean: formattedMean,
             formattedDelta: formattedDelta,
             formattedMeanAndDelta: formattedMean + (formattedDelta ? ' \xb1 ' + formattedDelta + ' (' + formattedPercentDelta + ')' : ''),
