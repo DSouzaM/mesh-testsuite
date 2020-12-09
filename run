@@ -32,8 +32,9 @@ docker volume create "$VOLUME" || true
 FF_WAIT_SECS="$(head -n 1 firefox-wait-seconds)"
 TEST='0-firefox'
 echo "running $TEST ($RUN_COUNT)"
-docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS "speed"
-docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS "memory"
+#docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS "speed"
+#docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS "memory"
+docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS "cache"
 
 sudo rm -rf ./results-old
 if [ -d ./results ]; then
@@ -49,7 +50,7 @@ $ANALYSIS_RUN sh -c 'cp -r /data/* /results/'
 sudo chown -R $USER results
 
 # delete results for short-lived subprocesses firefox spawns
-find results/0-firefox/memory -name '*.tsv' -size -10k -delete
+#find results/0-firefox/memory -name '*.tsv' -size -10k -delete
 
 # ./analysis/0-firefox.py
 # (cd results/0-firefox/memory; rm -f jemalloc.tsv; ln -s $(ls -t speedometer.jemalloc*.tsv | head -n 1) jemalloc.tsv)

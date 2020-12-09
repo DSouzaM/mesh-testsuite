@@ -17,6 +17,9 @@ case $TEST_METRIC in
   "speed")
     echo "Measuring speedometer speed (without mstat)"
     ;;
+  "cache")
+    echo "Measuring cache performance"
+    ;;
   *)
     echo "Unrecognized metric $TEST_METRIC"
     exit 1

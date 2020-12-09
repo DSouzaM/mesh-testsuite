@@ -21,6 +21,9 @@ elif [ $TEST_METRIC = "speed" ]; then
    echo "Running speedometer speed test"
    mkdir -p /data/0-firefox/speed
    COMMAND="env/bin/python atsy/example/comp_analysis.py -c atsy/example/comp_analysis_conf_speedometer.py --content-processes 0 -b Firefox --per_tab_pause $TEST_WAIT_SECS --settle_wait_time 1 | tee -a /data/0-firefox/speed/results.tsv"
+elif [ $TEST_METRIC = "cache" ]; then
+   echo "Running speedometer cache test"
+   COMMAND="env/bin/python atsy/example/comp_analysis.py -c atsy/example/comp_analysis_conf_speedometer.py --content-processes 0 -b Firefox --per_tab_pause $TEST_WAIT_SECS --settle_wait_time 1"
 else
    echo "Unsupported metric $TEST_METRIC."
    exit 1

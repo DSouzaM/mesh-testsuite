@@ -29,6 +29,11 @@ case $TEST_METRIC in
             exec $binary "$@"
         fi
         ;;
+    "cache")
+        mkdir -p /data/0-firefox/cache
+        outfile="/data/0-firefox/cache/speedometer.$TEST_NAME.$DATE-$SUFFIX.txt"
+        exec perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o $outfile "$DIR/firefox-test-wrapper-perf" $binary "$@"
+        ;;
     *)
         echo "Unrecognized metric $TEST_METRIC"
         exit 1

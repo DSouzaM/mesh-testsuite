@@ -1,0 +1,9 @@
+#!/bin/bash
+binary=$1
+shift
+
+if [ ! -z "$TEST_LD_PRELOAD" ]; then
+  LD_PRELOAD="$TEST_LD_PRELOAD" exec $binary "$@"
+else
+  exec $binary "$@"
+fi
