@@ -5,56 +5,21 @@ set -euo pipefail
 sudo su -c 'echo 655350 > /proc/sys/vm/max_map_count'
 sudo cpupower frequency-set -g performance 2>/dev/null || true
 
-# so firefox is authorized to talk to X from within the containter
-xhost local:root
-
 VOLUME="mesh-artifact-data"
 
 # default is for reproducible runs
-RUN_COUNT='5'
+RUN_COUNT='20'
 SPEC_FLAGS=''
 FIREFOX_ONLY='0'
-
-
-while (( "$#" )); do
-    if [[ '--getting-started' == "$1" ]]; then
-        echo "Getting Started -- fewer runs, non-ref dataset for SPEC"
-        RUN_COUNT='2'
-        SPEC_FLAGS='--no-ref'
-    elif [[ '--firefox' == "$1" ]]; then
-        echo "Only running Firefox benchmark"
-        FIREFOX_ONLY='1'
-    else
-        echo "unknown argument $1"
-        exit 1
-    fi
-
-    shift
-done
 
 RUN_FLAGS="--privileged --rm -t --mount type=volume,src=$VOLUME,dst=/data"
 
 docker volume rm "$VOLUME" || true
 docker volume create "$VOLUME" || true
 
-if [[ "$FIREFOX_ONLY" == '1' ]]; then
-    FF_WAIT_SECS="$(head -n 1 firefox-wait-seconds)"
-    TEST='0-firefox'
-    echo "running $TEST ($RUN_COUNT)"
-    docker run $RUN_FLAGS --ipc=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY "$(cat ./$TEST/IMAGE-NAME)" ./entrypoint.sh $RUN_COUNT $FF_WAIT_SECS
-else
-    TEST='1-redis'
-    echo "running $TEST"
-    docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST --metric=memory
-#    docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST --metric=tlb
-    # TEST='2-spec'
-    # echo "running $TEST"
-    # (cd 2-spec/runner && ./test $SPEC_FLAGS --volume=$VOLUME)
-
-    # TEST='3-ruby'
-    # echo "running $TEST"
-    # docker run $RUN_FLAGS bpowers/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST
-fi
+TEST='1-redis'
+echo "running $TEST"
+docker run $RUN_FLAGS mwdsouza/mesh-artifact-$TEST ./test --runs $RUN_COUNT --data-dir=/data/$TEST frag --metric memory 
 
 sudo rm -rf ./results-old
 if [ -d ./results ]; then
@@ -68,20 +33,3 @@ $ANALYSIS_RUN sh -c 'cp -r /data/* /results/'
 
 # docker sucks sometimes
 sudo chown -R $USER results
-
-# delete results for short-lived subprocesses firefox spawns
-# find results/0-firefox/memory -name '*.tsv' -size -10k -delete
-
-if [[ "$FIREFOX_ONLY" == '1' ]]; then
-    ./analysis/0-firefox.py
-    (cd results/0-firefox/memory; rm -f jemalloc.tsv; ln -s $(ls -t speedometer.jemalloc*.tsv | head -n 1) jemalloc.tsv)
-    (cd results/0-firefox/memory; rm -f mesh.tsv; ln -s $(ls -t speedometer.mesh*.tsv | head -n 1) mesh.tsv)
-    $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-6-firefox.r'
-else
-    $ANALYSIS_RUN ./analysis/1-redis.py
-    # ./analysis/2-spec.py
-    # ./analysis/3-ruby.py
-    $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-7-redis.r'
-    # $ANALYSIS_RUN sh -c 'SOURCE_DATE_EPOCH=0 R --vanilla <analysis/figure-8-ruby.r'
-fi
-

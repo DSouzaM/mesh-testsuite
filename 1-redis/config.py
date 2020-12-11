@@ -12,7 +12,7 @@ class Config:
 
 configs = [
     Config('libc',          'USE_JEMALLOC=no'),
-    Config('mesh0n',        'USE_JEMALLOC=no',          '-Wl,--no-as-needed -lmesh0n'),
+#    Config('mesh0n',        'USE_JEMALLOC=no',          '-Wl,--no-as-needed -lmesh0n'),
 #    Config('mesh0y',        'USE_JEMALLOC=no',          '-Wl,--no-as-needed -lmesh0y'),
 #    Config('mesh1y',        'USE_JEMALLOC=no',          '-Wl,--no-as-needed -lmesh1y'),
     Config('mesh2y',        'USE_JEMALLOC=no',          '-Wl,--no-as-needed -lmesh2y'),

@@ -22,7 +22,7 @@ TEST_SCRIPT = 'fragmentation.redis'
 
 ROOT_DIR = os.getcwd()
 
-TEST_DURATION = 20 # seconds
+TEST_DURATION = 80 # seconds
 
 DELIM = '>>>>>>>>>>' # delimits different mesh dumps
 
@@ -140,19 +140,30 @@ def test_perf(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
             continue
         if enabled_configs and config.name not in enabled_configs:
             continue
-
         server = tool('redis-server', config.name)
+        print("Starting redis server: %s" % server)
         server_cmd = run_cmd('%s redis.conf' % server)
 
-        time.sleep(.1) # sleep for 100 ms to give server time to start
+        time.sleep(1) # sleep for 100 ms to give server time to start
 
         start = time.time()
 
+        print("Running benchmark %s" % redis_benchmark)
         run_cmd(redis_benchmark).join()
+        print("Benchmark %s finished" % redis_benchmark)
 
         end = time.time()
 
         duration_secs = end - start
+
+        server_pid = getpid('redis-server')
+       
+        if 'mesh' in config.name and detailed_mesh_stats:
+            run_cmd('kill -42 %d' % server_pid).join()
+            time.sleep(10)
+
+
+        run_cmd('kill %d' % server_pid).join()
 
         server_cmd.end()
         server_cmd.join()
@@ -205,7 +216,8 @@ def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
         print('%s' % config.name)
 
         server = tool('redis-server', config.name)
-        cmd = '%s redis.conf' % server
+        #cmd = '%s redis.conf' % server
+        cmd = server
         if metric == 'memory':
             mstat_log_name = '%s.%d.tsv' % (config.name, time.time())
             symlink_dst = path.join(data_dir, 'memory', '%s.tsv' % config.name)
@@ -221,19 +233,19 @@ def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
             tlb_results_path = path.join(data_dir, 'tlb', tlb_log_name)
             cmd = "perf stat -e dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses -x' ' -o %s %s" % (tlb_results_path, cmd)
 
+        print("Running server command %s" % cmd)
         server_cmd = run_cmd(cmd)
 
         start = time.time()
         time.sleep(.4) # sleep for 100 ms to give server time to start
         server_pid = getpid('redis-server')
 
-        client = run_cmd('cat %s | %s' % (TEST_SCRIPT, REDIS_CLI)).join()
+        #client = run_cmd('cat %s | %s' % (TEST_SCRIPT, REDIS_CLI)).join()
+        #client = run_cmd(tool('redis-benchmark', 'jemalloc')).join()
+        client = run_cmd('./go-ycsb load redis -P workloada -p "redis.addr=127.0.0.1:6379" -p "recordcount=1000000" -p "operationcount=1000000" -p "readproportion=0.1" -p "updateproportion=0.9"').join()
 
         time.sleep(.5)
         run_cmd('%s dbsize' % REDIS_CLI).join()
-
-        if 'mesh' in config.name and detailed_mesh_stats:
-            run_cmd('kill -42 %d' % server_pid).join()
 
         if config.defrag:
             run_cmd('%s config set activedefrag yes' % REDIS_CLI).join()
@@ -242,10 +254,6 @@ def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
             run_cmd('%s info' % REDIS_CLI).join()
             time.sleep(5) # give time to reach steady state
             run_cmd('%s info' % REDIS_CLI).join()
-
-        if 'mesh' in config.name and detailed_mesh_stats:
-            run_cmd('kill -42 %d' % server_pid).join()
-            time.sleep(1)
 
         elapsed = time.time() - start
         remaining = TEST_DURATION - elapsed
@@ -256,17 +264,13 @@ def test_frag(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir=
             log(DEBUG, 'aint nobody got time for sleeping')
 
         run_cmd('kill %d' % server_pid).join()
-        time.sleep(1.2) # give mstat a chance to finish up
+        time.sleep(5) # give mstat a chance to finish up
         server_cmd.end()
         server_cmd.join()
-
-        if 'mesh' in config.name and detailed_mesh_stats:
-            miniheap_lines = server_cmd.stderr.decode('utf8').splitlines()
-            parts = split_mesh_dump(miniheap_lines)
-            log(DEBUG, 'len(parts): %d/%d/%d', len(parts), len(parts[0]), len(miniheap_lines))
-            print_distribution(parts[0])
-            print_distribution(parts[1])
-
+        print("Server process (pid %s) joined!" % (server_pid))
+        # read buffers to hopefully close processes
+        server_cmd.stdout.decode('utf8')
+        server_cmd.stderr.decode('utf8')
 
 def test_fragperf(metric, detailed_mesh_stats=False, enabled_configs=None, data_dir='.'):
     '''
@@ -341,8 +345,8 @@ def main():
     if args.v:
         log = make_reporter(DEBUG, False, sys.stderr)
 
-    if args.mesh_details:
-        os.environ['MESH_BACKGROUND_THREAD'] = '1'
+    #if args.mesh_details:
+    #    os.environ['MESH_BACKGROUND_THREAD'] = '1'
 
     if args.freq:
         global FREQ
