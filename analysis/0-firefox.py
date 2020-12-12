@@ -132,7 +132,7 @@ def collect_speed():
 
 def main():
     collect_memory()
-    collect_speed()
+    #collect_speed()
 
 
 if __name__ == '__main__':

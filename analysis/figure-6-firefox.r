@@ -7,6 +7,11 @@ dat_jemalloc$alloc <- 'jemalloc'
 dat_jemalloc$heap <- (dat_jemalloc$rss + dat_jemalloc$kernel) / 1024.0 / 1024.0
 dat_jemalloc$time <- dat_jemalloc$time / 1000000000.0
 
+dat_mesh_new<- read.delim('results/0-firefox/memory/mesh_new.tsv', header = TRUE, sep = '\t')
+dat_mesh_new$alloc <- 'Mesh New'
+dat_mesh_new$heap <- (dat_mesh_new$rss + dat_mesh_new$kernel) / 1024.0 / 1024.0
+dat_mesh_new$time <- dat_mesh_new$time / 1000000000.0
+
 dat_mesh2y <- read.delim('results/0-firefox/memory/mesh.tsv', header = TRUE, sep = '\t')
 dat_mesh2y$alloc <- 'Mesh'
 dat_mesh2y$heap <- (dat_mesh2y$rss + dat_mesh2y$kernel) / 1024.0 / 1024.0
@@ -14,6 +19,7 @@ dat_mesh2y$time <- dat_mesh2y$time / 1000000000.0
 
 p <- ggplot() +
     geom_line(data=dat_mesh2y, size=.5, aes(x=time, y=heap, color=alloc, group=1)) +
+    geom_line(data=dat_mesh_new, size=.5, aes(x=time, y=heap, color=alloc, group=3)) +
     geom_line(data=dat_jemalloc, size=.5, aes(x=time, y=heap, color=alloc, group=8)) +
     scale_y_continuous('RSS (MiB)', expand = c(0, 0), limits = c(0, 900)) +
     scale_x_continuous('Time Since Program Start (seconds)', expand = c(0, 0), limits = c(0, 144)) +
