@@ -11,7 +11,7 @@ DIR="."
 
 # List of programs to interleave
 WORKLOADS=("timemysql.sh" "timelarson.sh" "timebinarytree.sh", "timeredis.sh")
-MALLOCLIBS=("/usr/lib/x86_64-linux-gnu/libjemalloc.so" "malloc" "/usr/lib/libmesh.so")
+MALLOCLIBS=("/usr/lib/x86_64-linux-gnu/libjemalloc.so" "malloc" "/usr/lib/libmesh_orig.so")
 
 TMP_FILE="temp"
 

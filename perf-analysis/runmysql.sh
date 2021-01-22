@@ -39,4 +39,3 @@ go-ycsb load mysql -p mysql.host=127.0.0.1 -p mysql.port=3306 -p mysql.user=root
 go-ycsb run mysql -P $ycsbpath/go-ycsb/workloads/workloada -p mysql.host=127.0.0.1 -p mysql.port=3306 -p mysql.user=root -p mysql.password=password -p mysql.db=testdb -p recordcount=1000 -p threadcount=2
 
 mysqladmin shutdown mysqld_safe
-

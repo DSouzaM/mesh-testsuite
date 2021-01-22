@@ -11,9 +11,9 @@ DIR="."
 
 
 # List of programs to interleave
-WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh", "runredis.sh")
+WORKLOADS=("runmysql.sh" "runlarson.sh" "runbinarytree.sh" "runredis.sh")
 # List of malloc libraries
-MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh.so")
+MALLOCLIBS=("malloc" "/usr/lib/x86_64-linux-gnu/libjemalloc.so" "/usr/lib/libmesh_orig.so")
 
 TMP_FILE="temp"
 
@@ -29,13 +29,13 @@ for workload in "${WORKLOADS[@]}"; do
 	echo "dTLB-load-misses,iTLB-load-misses,dTLB-store-misses,cache-references,cache-misses,memlib" >> "$OUTPUT_FILE"
 done
 
-for ((i = 0 ; i < $COUNT ; i++)); do
+for workload in "${WORKLOADS[@]}"; do
 	# iterate through each of the workloads 
 	# append their output to their respective files
 	# Add column names indicating what the stats are
 	# Will be helpful when analyzing using a library like Pandas
 
-	for workload in "${WORKLOADS[@]}"; do
+	for ((i = 0 ; i < $COUNT + 1 ; i++)); do
 		# Create output file for each program
 		OUTPUT_FILE="output-$workload.csv"
 		
